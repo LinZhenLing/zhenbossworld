@@ -1,0 +1,677 @@
+/* 添加 CSS 變數 */
+:root {
+  --primary-color: #4A90E2; /* 柔和且專業的藍色，作為主要連結、標題強調色 */
+  --secondary-color: #CCCCD2; /* Resume - 活力橘黃色，保留活潑感 */
+  --tertiary-color:#96959B; /* Projects - 較深的紫羅蘭藍，與主藍色系融合 */
+  --quaternary-color: #6C6C73 ; /* Contact - 淺湖水藍，輕盈有活力 */
+  --skills-color: #BDBCC2 ; /* Skills - 維持中性灰色，保持專業穩重 */
+  --news-button-color: #71778E; /* 新增：首頁新聞櫥窗按鈕顏色 */
+  --text-dark: #333333; /* 較深的灰色，比純黑柔和，用於主要文字 */
+  --text-medium: #555555; /* 中等灰色文字 */
+  --text-light: #999999; /* 淺灰色文字 */
+  --background-light: #F3F4F7; /* 淺米色背景，溫暖而柔和 */
+  --background-medium: #F3F4F7; /* 中等米色背景，與淺米色形成層次 */
+  --box-shadow-light: 0 2px 12px rgba(0,0,0,0.06); /* 陰影更柔和 */
+  --box-shadow-medium: 0 6px 24px rgba(0,0,0,0.1); /* 陰影更柔和 */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 60px;
+  --border-color: #D3D3D3; /* 淺灰色邊框，更柔和 */
+}
+
+/* 簡單的滑動效果 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 統一 body 樣式 */
+body {
+  background: var(--background-medium);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* 首頁區塊 */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+  /* 在這裡加入新的漸層背景 */
+  background: linear-gradient(to bottom, var(--background-light), #A0A6C4);
+}
+
+.profile-pic img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+  background: #ddd;
+  margin-bottom: var(--spacing-lg);
+}
+
+.intro h1 {
+  font-size: 2.4em;
+  margin: 0 0 var(--spacing-sm) 0; /* 調整下邊距 */
+  color: var(--text-dark);
+  font-weight: 700; /* 保持中文名字粗體 */
+  text-align: center; /* 置中 */
+}
+
+.intro .english-name { /* 新增這個樣式 */
+  font-size: 1.5em; /* 調整英文名字的大小 */
+  color: var(--text-medium); /* 調整英文名字的顏色 */
+  font-weight: normal; /* **不加粗** */
+  margin: var(--spacing-xs) 0 var(--spacing-md) 0; /* 調整與上下元素的間距 */
+  text-align: center; /* 置中 */
+}
+
+.motto {
+  font-size: 1.2em;
+  color: #040405;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  font-weight: 200;
+}
+
+.buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-dark); /* 預設按鈕文字顏色為深色 */
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: var(--box-shadow-light);
+  background: #e0e7ef; /* 預設按鈕背景 */
+}
+
+.btn.resume {
+  background: var(--secondary-color);
+  color: var(--text-dark); /* 確保文字可見 */
+}
+
+.btn.skills {
+  background: var(--skills-color);
+  color: var(--text-dark); /* 調整為與 contact 相同文字顏色 */
+}
+
+.btn.projects {
+  background: var(--tertiary-color);
+  color: var(--text-dark); /* 調整為與 contact 相同文字顏色 */
+}
+
+.btn.contact {
+  background: var(--quaternary-color);
+  color: var(--text-dark); /* 淺色背景配深色文字 */
+}
+
+/* 首頁新聞櫥窗按鈕樣式 (如果有的話) */
+.btn.news {
+  background: var(--news-button-color); /* 使用新定義的變數 */
+  color: var(--text-dark); /* 確保文字顏色可見 */
+}
+
+.btn:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: var(--box-shadow-medium);
+}
+
+/* 首頁按鈕的響應式調整 */
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  .btn {
+    width: 80px;
+    height: 80px;
+    font-size: 1em;
+  }
+}
+
+/* 履歷區塊 */
+.resume-container {
+  display: flex;
+  max-width: 1300px;
+  margin: var(--spacing-xl) auto 0 auto;
+  min-height: 90vh;
+  background: #E8EDEF; /* 已調整為 #EFEBE6 */
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.resume-left {
+  width: 32%;
+  padding: 40px 0 0 80px;
+  box-sizing: border-box;
+  border-right: 1px solid var(--border-color);
+  padding-right: var(--spacing-md);
+}
+
+.resume-left h1 {
+  font-size: 2.8em;
+  font-weight: bold;
+  margin-bottom: 70px;
+  letter-spacing: 1px;
+}
+
+.resume-section {
+  margin-bottom: 30px;
+}
+
+.resume-section h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.resume-right {
+  width: 68%;
+  padding: 40px 80px 0 40px;
+  box-sizing: border-box;
+}
+
+.resume-block {
+  margin-bottom: 80px;
+}
+
+.job {
+  display: flex;
+  margin-bottom: 36px;
+}
+
+.job-date {
+  width: 160px;
+  color: var(--text-light);
+  font-size: 1em;
+  flex-shrink: 0;
+  margin-right: var(--spacing-lg);
+  margin-top: 4px;
+}
+
+.job-info {
+  flex: 1;
+}
+
+.job-info strong {
+  font-size: 1.15em;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-dark);
+}
+
+.job-info p {
+  margin: 0;
+  color: var(--text-medium);
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* 履歷區塊的響應式調整 */
+@media (max-width: 1100px) {
+  .resume-container {
+    flex-direction: column;
+  }
+  .resume-left,
+  .resume-right {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-md) 0 var(--spacing-md);
+  }
+  .resume-left {
+    margin-bottom: var(--spacing-lg);
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-lg);
+  }
+}
+
+/* 獨立的技能區塊樣式 - 調整為左右兩欄 */
+.skills-section-container {
+  display: flex; /* 使用 Flexbox 實現左右兩欄 */
+  max-width: 1300px;
+  margin: var(--spacing-xl) auto;
+  min-height: 90vh; /* 確保有足夠高度 */
+  background: #E8EDEF; /* 已調整為 #EFEBE6 */
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.skills-left {
+  width: 32%; /* 與 .resume-left 保持一致的寬度 */
+  padding: 40px 0 0 80px; /* 與 .resume-left 保持一致的內邊距 */
+  box-sizing: border-box;
+  border-right: 1px solid var(--border-color); /* 與 .resume-left 保持一致的右邊框 */
+  padding-right: var(--spacing-md);
+}
+
+.skills-left h1 {
+  font-size: 2.8em; /* 與 .resume-left h1 保持一致的字體大小 */
+  font-weight: bold;
+  margin-bottom: 70px;
+  letter-spacing: 1px;
+}
+
+.skills-right {
+  width: 68%; /* 與 .resume-right 保持一致的寬度 */
+  padding: 40px 80px 0 40px; /* 與 .resume-right 保持一致的內邊距 */
+  box-sizing: border-box;
+}
+
+.skills-block {
+  margin-bottom: 80px; /* 可根據內容調整，如果技能很多，這個間距可能不用這麼大 */
+}
+
+.skill-category {
+  margin-bottom: var(--spacing-lg); /* 每個技能類別間距 */
+  border-bottom: 1px solid var(--background-light); /* 分隔線 */
+  padding-bottom: var(--spacing-md);
+}
+
+.skill-category:last-of-type {
+  border-bottom: none; /* 最後一個不顯示分隔線 */
+  padding-bottom: 0;
+}
+
+.skill-category h3 {
+  font-size: 1.25em;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+  font-weight: bold;
+}
+
+.skill-category p {
+  font-size: 0.98em;
+  color: var(--text-medium);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.skill-projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-projects-list li {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.95em;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.skill-projects-list li strong {
+  color: var(--text-dark);
+}
+
+/* 影片嵌入容器樣式 */
+.video-embed-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  height: 0;
+  margin-top: var(--spacing-sm); /* 影片上方間距 */
+  margin-bottom: var(--spacing-sm); /* 影片下方間距 */
+  overflow: hidden; /* 確保內容不溢出 */
+  border-radius: 8px; /* 圓角效果 */
+  box-shadow: var(--box-shadow-light); /* 添加陰影 */
+}
+
+.video-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0; /* 移除 iframe 預設邊框 */
+}
+
+/* 影片標籤樣式 */
+.video-label {
+  display: inline-block;
+  font-size: 0.85em;
+  color: var(--primary-color); /* 藍色文字 */
+  font-weight: bold;
+  margin-top: var(--spacing-xs); /* 與影片間距 */
+}
+
+/* 新增圖片嵌入容器樣式 */
+.image-embed-container {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden; /* 確保內容不溢出 */
+  border-radius: 8px; /* 圓角效果 */
+  box-shadow: var(--box-shadow-light); /* 添加陰影 */
+}
+
+.image-embed-container img.skill-image {
+  display: block; /* 移除圖片下方空白 */
+  width: 100%; /* 確保圖片寬度適應容器 */
+  max-height: 450px; /* 設定圖片最大高度為 150px，你可以根據需要調整這個數值 */
+  height: auto; /* 高度自動調整，保持圖片比例 */
+  object-fit: contain; /* 確保圖片完整顯示在容器內，可能會留白 */
+  margin-left: auto; /* 如果要讓圖片在容器內置中 */
+  margin-right: auto; /* 如果要讓圖片在容器內置中 */
+}
+
+/* 新增針對活動企劃圖片的樣式 */
+.image-embed-container img.skill-image-event {
+  display: block;
+  width: 100%;
+  max-height: 450px; /* 範例：可以設定一個與其他圖片不同的高度 */
+  height: auto;
+  object-fit: contain; /* 活動照片可能更適合 'cover' 以填滿區域，避免留白 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* 作品集區塊樣式 */
+.projects-container {
+  max-width: 1300px;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg) 80px;
+  background: #E8EDEF; /* 已調整為 #EFEBE6 */
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.projects-container h2 {
+  font-size: 2.5em;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  font-weight: bold;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  padding: 0;
+  list-style: none;
+}
+
+.project-item {
+  background: var(--background-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-light);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  /* 添加這一行來置中 .project-link.news-project */
+  text-align: center; 
+}
+
+.project-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.project-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-item h3 {
+  font-size: 1.3em;
+  color: var(--text-dark);
+  margin: var(--spacing-sm) var(--spacing-md) 0;
+}
+
+.project-item p {
+  font-size: 0.95em;
+  color: var(--text-medium);
+  padding: 0 var(--spacing-md) var(--spacing-md);
+  flex-grow: 1;
+}
+
+.project-link {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 0 auto var(--spacing-md) auto; /* 使用 auto 來置中 inline-block */
+  transition: background 0.3s ease;
+}
+
+.project-link:hover {
+  background: #0056b3;
+}
+
+/* 針對特定新聞櫥窗連結的樣式 */
+.project-link.news-project {
+  background: #71778E; /* 直接設定為 #71778E */
+  color: white; /* 確保文字顏色可見 */
+}
+
+
+/* 作品集區塊的響應式調整 */
+@media (max-width: 1100px) {
+  .projects-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 聯絡方式區塊樣式 */
+.contact-container {
+  max-width: 1300px;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg) 80px;
+  background: #E8EDEF; /* 已調整為 #EFEBE6 */
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-size: 2.5em;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-lg);
+  font-weight: bold;
+}
+
+.contact-content p {
+  font-size: 1.1em;
+  color: var(--text-medium);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.contact-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  background: var(--background-light);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-width: 280px;
+  flex-grow: 1;
+  max-width: 48%;
+}
+
+.contact-item i {
+  font-size: 1.2em;
+  color: var(--primary-color);
+  margin-right: var(--spacing-sm);
+  width: 25px;
+  text-align: center;
+}
+
+.contact-item span {
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-right: var(--spacing-xs);
+}
+
+.contact-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-message {
+  margin-top: var(--spacing-lg);
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* 聯絡方式區塊的響應式調整 */
+@media (max-width: 1100px) {
+  .contact-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-info-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact-item {
+    max-width: 100%;
+  }
+}
+
+/* --- 回到頂端按鈕樣式 --- */
+#BackTop {
+  /* 尺寸 */
+  width: 50px; /* 2.5rem * 16px/rem = 40px，這裡設為50px更明顯 */
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  border: none; /* 無邊框 */
+  outline: none; /* 無外框 */
+  border-radius: 50%; /* 圓形按鈕 */
+  opacity: 0.9; /* 預設透明度 */
+  
+  /* 位置 */
+  position: fixed;
+  right: 1.5rem; /* 距離右側 1.5rem */
+  bottom: 1.5rem; /* 距離底部 1.5rem */
+  z-index: 999; /* 確保按鈕在其他內容之上 */
+  display: none; /* 預設隱藏，由 jQuery 控制顯示 */
+
+  /* 視覺 */
+  background-color: var(--primary-color); /* 使用變數設定按鈕背景色 */
+  cursor: pointer;
+  box-shadow: var(--box-shadow-medium); /* 使用中等陰影 */
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.3s ease; /* 添加過渡效果 */
+}
+
+/* --- 回到頂端按鈕樣式 --- */
+#BackTop {
+  /* 尺寸 */
+  width: 50px; /* 寬度設為 50px */
+  height: 50px; /* 高度設為 50px，確保是正方形 */
+  padding: 0;
+  margin: 0;
+  border: none; /* 移除邊框 */
+  outline: none; /* 移除點擊時的外框 */
+  border-radius: 50%; /* 完美圓形 */
+  opacity: 0.9; /* 預設透明度，比 0.6 更顯眼 */
+  
+  /* 位置 */
+  position: fixed;
+  right: var(--spacing-md); /* 使用變數，距離右側 24px */
+  bottom: var(--spacing-md); /* 使用變數，距離底部 24px */
+  z-index: 999; /* 確保按鈕在其他內容之上 */
+  display: none; /* 預設隱藏，由 JavaScript 或 jQuery 控制顯示與隱藏 */
+
+  /* 視覺 */
+  background-color: var(--primary-color); /* 使用您的主要藍色作為背景色 */
+  cursor: pointer;
+  box-shadow: var(--box-shadow-medium); /* 使用較柔和的中等陰影 */
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.3s ease; /* 添加平滑過渡效果 */
+  display: flex; /* 確保偽元素箭頭可以置中 */
+  align-items: center; /* 垂直置中 */
+  justify-content: center; /* 水平置中 */
+}
+
+/* 箭頭樣式 (使用偽元素) */
+#BackTop::before, 
+#BackTop::after {
+  content: ""; /* 偽元素必須有 content 屬性 */
+  width: 16px; /* 箭頭寬度 */
+  height: 4px; /* 箭頭厚度 */
+  border-radius: 2px; /* 箭頭末端圓角 */
+  background: white; /* 箭頭顏色設為白色，與藍色背景形成對比 */
+  position: absolute;
+  top: 50%; /* 垂直置中基礎點 */
+  left: 50%; /* 水平置中基礎點 */
+  transform-origin: center; /* 旋轉中心點在元素中心 */
+  transition: transform 0.2s ease; /* 箭頭本身的過渡效果 */
+}
+
+#BackTop::before {
+  transform: translate(-50%, -50%) rotate(-45deg) translateX(-4px); /* 向上箭頭左半邊，調整位置使其會合 */
+}
+
+#BackTop::after {
+  transform: translate(-50%, -50%) rotate(45deg) translateX(4px); /* 向上箭頭右半邊，調整位置使其會合 */
+}
+
+/* 懸停效果 */
+#BackTop:hover {
+  opacity: 1; /* 懸停時完全不透明 */
+  background-color: #3A7AD5; /* 懸停時顏色稍變深 */
+  transform: translateY(-5px); /* 懸停時向上輕微移動 */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15); /* 懸停時陰影更明顯 */
+}
+
+/* 確保點擊後沒有惱人的虛線框 */
+#BackTop:focus {
+  outline: none;
+}
